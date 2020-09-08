@@ -1,13 +1,9 @@
-import React from 'react'
-import {View, Text, StyleSheet, ScrollView, Image} from 'react-native'
-import Carousel from '../component/Carousel'
-import Category from "../component/Category"
-import { dummyData } from '../data/Data'
+import React, { Component } from 'react'
 
-
-const Home = ({navigation}) =>{
-    return (
-        <ScrollView scrollEventThrottle={16}>
+export default class HomeTab extends Component {
+    render() {
+        return (
+            <ScrollView scrollEventThrottle={16}>
         <View>
             <Carousel data = {dummyData}/>
 
@@ -55,17 +51,17 @@ const Home = ({navigation}) =>{
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
-                                    <Category imageUri={require('../assets/pokhara.jpg')}
+                                    <Category imageUri={require("../../assets/pokhara.jpg")}
                                         name="Kathmandu"
                                     />
                                     
-                                    <Category imageUri={require('../assets/pokhara.jpg')}
+                                    <Category imageUri={require('../../assets/pokhara.jpg')}
                                         name="Pokhara"
                                     />
-                                    <Category imageUri={require('../assets/pokhara.jpg')}
+                                    <Category imageUri={require('../../assets/pokhara.jpg')}
                                         name="Dhangadi"
                                     />
-                                    <Category imageUri={require('../assets/pokhara.jpg')}
+                                    <Category imageUri={require('../../assets/pokhara.jpg')}
                                         name="Butwal"
                                     />
                                 </ScrollView>
@@ -80,17 +76,8 @@ const Home = ({navigation}) =>{
 
 
 
-        </View>  
-        </ScrollView>
-    )
+        </View>
+        </ScrollView>  
+        )
+    }
 }
-const styles=StyleSheet.create({
-    marketPrice:{
-      flex:1,
-      backgroundColor: "black",
-      flexDirection: "row",
-      
-    },
-  });
-
-export default Home
