@@ -5,6 +5,8 @@ import Category from "../component/Category"
 import { dummyData } from '../data/Data'
 
 
+
+
 const Home = ({navigation}) =>{
     return (
         <ScrollView scrollEventThrottle={16}>
@@ -84,6 +86,10 @@ const Home = ({navigation}) =>{
         </ScrollView>
     )
 }
+
+
+  
+
 const styles=StyleSheet.create({
     marketPrice:{
       flex:1,

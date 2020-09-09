@@ -1,9 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
+import {View, Text, StyleSheet, ScrollView, Image} from 'react-native'
+import Carousel from '../Carousel'
+import Category from "../Category"
+import { dummyData } from '../../data/Data'
 
-export default class HomeTab extends Component {
-    render() {
-        return (
-            <ScrollView scrollEventThrottle={16}>
+
+
+
+const Home = ({navigation}) =>{
+    return (
+        <ScrollView scrollEventThrottle={16}>
         <View>
             <Carousel data = {dummyData}/>
 
@@ -23,17 +29,17 @@ export default class HomeTab extends Component {
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
-                                    <Category imageUri={require('../assets/pokhara.jpg')}
+                                    <Category imageUri={require('../../assets/pokhara.jpg')}
                                         name="Kathmandu"
                                     />
                                     
-                                    <Category imageUri={require('../assets/pokhara.jpg')}
+                                    <Category imageUri={require('../../assets/pokhara.jpg')}
                                         name="Pokhara"
                                     />
-                                    <Category imageUri={require('../assets/pokhara.jpg')}
+                                    <Category imageUri={require('../../assets/pokhara.jpg')}
                                         name="Dhangadi"
                                     />
-                                    <Category imageUri={require('../assets/pokhara.jpg')}
+                                    <Category imageUri={require('../../assets/pokhara.jpg')}
                                         name="Butwal"
                                     />
                                 </ScrollView>
@@ -51,7 +57,7 @@ export default class HomeTab extends Component {
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
-                                    <Category imageUri={require("../../assets/pokhara.jpg")}
+                                    <Category imageUri={require('../../assets/pokhara.jpg')}
                                         name="Kathmandu"
                                     />
                                     
@@ -76,8 +82,21 @@ export default class HomeTab extends Component {
 
 
 
-        </View>
-        </ScrollView>  
-        )
-    }
+        </View>  
+        </ScrollView>
+    )
 }
+
+
+  
+
+const styles=StyleSheet.create({
+    marketPrice:{
+      flex:1,
+      backgroundColor: "black",
+      flexDirection: "row",
+      
+    },
+  });
+
+export default Home
