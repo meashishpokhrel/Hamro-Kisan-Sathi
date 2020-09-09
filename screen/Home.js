@@ -100,3 +100,15 @@ const styles=StyleSheet.create({
   });
 
 export default Home
+
+
+
+
+// exit_function = () => {
+//     BackHandler.exitApp();
+// }
+
+// <Button
+// title="Exit Button"
+// onPress={this.exit_function}
+// />

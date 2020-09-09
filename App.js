@@ -1,13 +1,14 @@
 import React from 'react'
 import {createAppContainer} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack'
-import {View,Text,StyleSheet, Image} from "react-native";
+import {View,Text,StyleSheet, Image, BackHandler} from "react-native";
 
 import {createBottomTabNavigator} from 'react-navigation-tabs'
 import BottomTabA from './component/AppTabNavigator/HomeTab'
 import BottomTabB from './component/AppTabNavigator/RefreshTab'
 import BottomTabC from './component/AppTabNavigator/ExitTab'
 import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 
 
@@ -29,7 +30,7 @@ const tabNavigator = createBottomTabNavigator({
     "Hamro Kisan Sathi": BottomTabA,
   }),
   Exit: createStackNavigator({
-      TabC: BottomTabC,
+      Exit: BottomTabC,
   }),
 
 },
@@ -40,12 +41,13 @@ tabBarIcon: ({focused, horizontal,tintColor }) => {
   let IconComponent = Ionicons
   let iconName
   if (routeName === 'Home'){
-      iconName = focused ? 'ios-information-circle' : 'ios-information-circle-outline'
+      iconName = focused ? 'ios-home' : 'md-home'
   }else if (routeName === 'Refresh'){
-      iconName = focused ? 'ios-list-box' : 'ios-list'
+      iconName = focused ? 'ios-refresh-circle' : 'md-refresh-circle'
   }
   else if (routeName === 'Exit'){
-    iconName = focused ? 'ios-list-box' : 'ios-list'
+    iconName = focused ? 'md-exit' : 'ios-exit';
+    // BackHandler.exitApp();
 }
 
   return <IconComponent name = {iconName} size = {25} color = {tintColor}></IconComponent>
@@ -53,12 +55,12 @@ tabBarIcon: ({focused, horizontal,tintColor }) => {
 }),
 
 tabBarOptions:{
-  activeTintColor: '#fff',
+  activeTintColor: '#463eb6',
   activeBackgroundColor: '#f4511e',
 
   keyboardHidesTabBar: false,
   tabStyle: {
-      backgroundColor: '#f4511e'
+      backgroundColor: '#8bfab9'
   },
 
   labelStyle: {
