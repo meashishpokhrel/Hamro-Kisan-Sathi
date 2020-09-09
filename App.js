@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {createAppContainer} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack'
 import {View,Text,StyleSheet, Image, BackHandler} from "react-native";
@@ -9,6 +10,7 @@ import BottomTabB from './component/AppTabNavigator/RefreshTab'
 import BottomTabC from './component/AppTabNavigator/ExitTab'
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+
 
 
 
@@ -27,7 +29,7 @@ const tabNavigator = createBottomTabNavigator({
   }) ,
 
   Refresh: createStackNavigator({
-    "Hamro Kisan Sathi": BottomTabA,
+    "Hamro Kisan Sathi Latest": BottomTabB,
   }),
   Exit: createStackNavigator({
       Exit: BottomTabC,

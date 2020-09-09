@@ -6,7 +6,10 @@ import {
     Image
 } from "react-native";
 
-class Category extends Component {
+
+export default class Category extends React.Component {
+
+
     render() {
         return (
             <View style={{ height: 130, width: 130, marginLeft: 20, borderWidth: 0.5, borderColor: '#dddddd' }}>
@@ -15,7 +18,7 @@ class Category extends Component {
                         style={{ flex: 1, width: null, height: null, resizeMode: 'cover', opacity: 0.67 }}
                     />
                     <View>
-                        <Text style={styles.rateText}>Rs. 2402</Text>
+                        <Text style={styles.rateText}>{this.props.name2}</Text>
                     </View>
                 </View>
                 <View style={{ flex: 1, paddingLeft: 10, paddingTop: 10 }}>
@@ -25,7 +28,7 @@ class Category extends Component {
         );
     }
 }
-export default Category;
+
 
 const styles = StyleSheet.create({
     container: {
@@ -37,7 +40,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 10,
         margin: 10,
-        left: 5,
+        left: 15,
         color: 'white',
         fontSize: 22,
         shadowColor: '#000',

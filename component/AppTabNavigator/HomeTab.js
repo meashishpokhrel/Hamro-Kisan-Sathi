@@ -3,12 +3,67 @@ import {View, Text, StyleSheet, ScrollView, Image} from 'react-native'
 import Carousel from '../Carousel'
 import Category from "../Category"
 import { dummyData } from '../../data/Data'
+import { render } from 'react-dom'
+import firebasedata from "../../config"
+export default class App extends React.Component{
+   
+
+    state={
+        kathmandu:4,
+        pokhara:6,
+        dhangadi:8,
+        butwal:10
+    }
+
+    componentDidMount(){
+
+        firebasedata.database().ref('users/ekdine').on('value', (snapshot) =>{
+            this.setState({
+           ktm1: snapshot.val().kathmandu,
+           pok1: snapshot.val().pokhara,
+           dha1: snapshot.val().dhangadi,
+           but1: snapshot.val().butwal,
+
+          })
+        })
+
+        firebasedata.database().ref('users/twodine').on('value', (snapshot) =>{
+            this.setState({
+           ktm2: snapshot.val().kathmandu,
+           pok2: snapshot.val().pokhara,
+           dha2: snapshot.val().dhangadi,
+           but2: snapshot.val().butwal,
+
+          })
+        })
+
+        firebasedata.database().ref('users/thirddine').on('value', (snapshot) =>{
+            this.setState({
+           ktm3: snapshot.val().kathmandu,
+           pok3: snapshot.val().pokhara,
+           dha3: snapshot.val().dhangadi,
+           but3: snapshot.val().butwal,
+
+          })
+        })
+
+        firebasedata.database().ref('users/fourthdine').on('value', (snapshot) =>{
+            this.setState({
+           ktm4: snapshot.val().kathmandu,
+           pok4: snapshot.val().pokhara,
+           dha4: snapshot.val().dhangadi,
+           but4: snapshot.val().butwal,
+
+          })
+        })
 
 
+        
+        }
 
-
-const Home = ({navigation}) =>{
+    render(){
     return (
+        
         <ScrollView scrollEventThrottle={16}>
         <View>
             <Carousel data = {dummyData}/>
@@ -29,18 +84,18 @@ const Home = ({navigation}) =>{
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
-                                    <Category imageUri={require('../../assets/pokhara.jpg')}
-                                        name="Kathmandu"
+                                    <Category imageUri={require('../../assets/kathmandu.jpeg')}
+                                        name="Kathmandu" name2={this.state.ktm1}
                                     />
                                     
                                     <Category imageUri={require('../../assets/pokhara.jpg')}
-                                        name="Pokhara"
+                                        name="Pokhara" name2={this.state.pok1}
                                     />
-                                    <Category imageUri={require('../../assets/pokhara.jpg')}
-                                        name="Dhangadi"
+                                    <Category imageUri={require('../../assets/dhangadi.jpg')}
+                                        name="Dhangadi" name2={this.state.dha1}
                                     />
-                                    <Category imageUri={require('../../assets/pokhara.jpg')}
-                                        name="Butwal"
+                                    <Category imageUri={require('../../assets/butwal.jpg')}
+                                        name="Butwal" name2={this.state.but1}
                                     />
                                 </ScrollView>
                             </View>
@@ -57,18 +112,18 @@ const Home = ({navigation}) =>{
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
-                                    <Category imageUri={require('../../assets/pokhara.jpg')}
-                                        name="Kathmandu"
+                                    <Category imageUri={require('../../assets/kathmandu.jpeg')}
+                                        name="Kathmandu" name2={this.state.ktm2}
                                     />
                                     
                                     <Category imageUri={require('../../assets/pokhara.jpg')}
-                                        name="Pokhara"
+                                        name="Pokhara" name2={this.state.pok2}
                                     />
-                                    <Category imageUri={require('../../assets/pokhara.jpg')}
-                                        name="Dhangadi"
+                                    <Category imageUri={require('../../assets/dhangadi.jpg')}
+                                        name="Dhangadi" name2={this.state.dha2}
                                     />
-                                    <Category imageUri={require('../../assets/pokhara.jpg')}
-                                        name="Butwal"
+                                    <Category imageUri={require('../../assets/butwal.jpg')}
+                                        name="Butwal" name2={this.state.but2}
                                     />
                                 </ScrollView>
                             </View>
@@ -85,18 +140,18 @@ const Home = ({navigation}) =>{
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
-                                    <Category imageUri={require('../../assets/pokhara.jpg')}
-                                        name="Kathmandu"
+                                   <Category imageUri={require('../../assets/kathmandu.jpeg')}
+                                        name="Kathmandu" name2={this.state.ktm3}
                                     />
                                     
                                     <Category imageUri={require('../../assets/pokhara.jpg')}
-                                        name="Pokhara"
+                                        name="Pokhara" name2={this.state.pok3}
                                     />
-                                    <Category imageUri={require('../../assets/pokhara.jpg')}
-                                        name="Dhangadi"
+                                    <Category imageUri={require('../../assets/dhangadi.jpg')}
+                                        name="Dhangadi" name2={this.state.dha3}
                                     />
-                                    <Category imageUri={require('../../assets/pokhara.jpg')}
-                                        name="Butwal"
+                                    <Category imageUri={require('../../assets/butwal.jpg')}
+                                        name="Butwal" name2={this.state.but3}
                                     />
                                 </ScrollView>
                             </View>
@@ -113,18 +168,18 @@ const Home = ({navigation}) =>{
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
-                                    <Category imageUri={require('../../assets/pokhara.jpg')}
-                                        name="Kathmandu"
+                                    <Category imageUri={require('../../assets/kathmandu.jpeg')}
+                                        name="Kathmandu" name2={this.state.ktm4}
                                     />
                                     
                                     <Category imageUri={require('../../assets/pokhara.jpg')}
-                                        name="Pokhara"
+                                        name="Pokhara" name2={this.state.pok4}
                                     />
-                                    <Category imageUri={require('../../assets/pokhara.jpg')}
-                                        name="Dhangadi"
+                                    <Category imageUri={require('../../assets/dhangadi.jpg')}
+                                        name="Dhangadi" name2={this.state.dha4}
                                     />
-                                    <Category imageUri={require('../../assets/pokhara.jpg')}
-                                        name="Butwal"
+                                    <Category imageUri={require('../../assets/butwal.jpg')}
+                                        name="Butwal" name2={this.state.but4}
                                     />
                                 </ScrollView>
                             </View>
@@ -141,7 +196,7 @@ const Home = ({navigation}) =>{
         </View>  
         </ScrollView>
     )
-}
+}}
 
 
   
@@ -155,4 +210,3 @@ const styles=StyleSheet.create({
     },
   });
 
-export default Home
