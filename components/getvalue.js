@@ -2,7 +2,7 @@ import React ,{Component} from 'react'
 import { render } from 'react-dom'
 import { View, Text } from 'react-native'
 
-class getvalue extends Component{
+class Getvalue extends Component{
 render(){
     return (
         <View>
@@ -12,4 +12,4 @@ render(){
     }
 }
 
-export default getvalue
+export default Getvalue

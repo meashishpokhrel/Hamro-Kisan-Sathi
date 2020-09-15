@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React, {useEffect} from 'react'
+import SplashScreen from 'react-native-splash-screen'
 import {createAppContainer} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack'
 import {View,Text,StyleSheet, Image, BackHandler, AsyncStorage} from "react-native";
@@ -9,22 +9,22 @@ import BottomTabA from "./components/HomeTab"
 import BottomTabB from './components/RefreshTab'
 import BottomTabC from './components/ExitTab'
 import Ionicons from 'react-native-vector-icons/Ionicons';
- 
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'; 
 
 
 
 
 const tabNavigator = createBottomTabNavigator({
   Home: createStackNavigator({
-      "Hamro Kisan Sathi": BottomTabB,
+      "Khukhure": BottomTabA,
       HomeTab: BottomTabA,
   }) ,
 
-  Refresh: createStackNavigator({
-    "Hamro Kisan Sathi Latest": BottomTabB,
+  "See All Rates": createStackNavigator({
+    "All Available Rates ": BottomTabB,
   }),
-  Exit: createStackNavigator({
-      Exit: BottomTabC,
+  "Contact Us": createStackNavigator({
+      "Contact Us": BottomTabC,
   }),
 
 },
@@ -36,11 +36,11 @@ tabBarIcon: ({focused, horizontal,tintColor }) => {
   let iconName
   if (routeName === 'Home'){
       iconName = focused ? 'ios-home' : 'md-home'
-  }else if (routeName === 'Refresh'){
-      iconName = focused ? 'ios-refresh-circle' : 'md-refresh-circle'
+  }else if (routeName === 'See All Rates'){
+      iconName = focused ? 'list-circle-sharp' : 'list-circle-outline'
   }
-  else if (routeName === 'Exit'){
-    iconName = focused ? 'md-exit' : 'ios-exit';
+  else if (routeName === 'Contact Us'){
+    iconName = focused ? 'md-call-sharp' : 'md-call-outline';
     // BackHandler.exitApp();
 }
 
@@ -49,12 +49,12 @@ tabBarIcon: ({focused, horizontal,tintColor }) => {
 }),
 
 tabBarOptions:{
-  activeTintColor: '#463eb6',
+  activeTintColor: '#ffffff',
   activeBackgroundColor: '#f4511e',
 
   keyboardHidesTabBar: false,
   tabStyle: {
-      backgroundColor: '#8bfab9'
+      backgroundColor: '#253cae'
   },
 
   labelStyle: {
@@ -68,6 +68,8 @@ tabBarOptions:{
 
 
 const App = createAppContainer(tabNavigator)
+
+
 
 export default App
 
