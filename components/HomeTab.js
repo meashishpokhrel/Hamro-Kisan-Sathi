@@ -27,7 +27,7 @@ export default class RefreshTab extends React.Component{
             id: 3
     }],
     date:{
-        name: ""
+        value: ""
     },
     topic1:{
         title: "", //Title ek dine chala
@@ -90,7 +90,16 @@ export default class RefreshTab extends React.Component{
         super (props);
         this.getUser();
         this.subscriber = firestore().collection("users").doc("v7Qq6snlsKgbk1OfTnJ3").onSnapshot(doc => {
-        
+            
+
+            this.subscriber11 = firestore().collection("updatedDate").doc("yYVQMdJ1Argb0uuZMfYq").onSnapshot(doc => {
+                this.setState({
+                    date:{
+                        value: doc.data().date,
+                    },
+                  })
+                })
+
             this.subscriber1 = firestore().collection("topic1").doc("YNLFsTS0fqqvlF9C0qsy").onSnapshot(doc => {
             this.setState({
                 topic1:{
@@ -100,7 +109,7 @@ export default class RefreshTab extends React.Component{
                     pok:doc.data().pok,     
                     ita:doc.data().ita,     
                     chit:doc.data().chit  
-                }
+                },
               })
             })
             this.subscriber2 = firestore().collection("topic2").doc("70Oo3WVDuZBkEpW57RlS").onSnapshot(doc => {
@@ -181,9 +190,6 @@ export default class RefreshTab extends React.Component{
                 description: doc.data().Detail3,
                 id: 3
         }],
-        date:{
-            name: doc.data().Dateupdated
-        }
           })
         })
     })
@@ -193,6 +199,7 @@ export default class RefreshTab extends React.Component{
 
       getUser = async () =>{
         const userDocument = await firestore().collection("users").doc("v7Qq6snlsKgbk1OfTnJ3").get()
+        const userDocument22 = await firestore().collection("updatedData").doc("yYVQMdJ1Argb0uuZMfYq").get()
         const userDocument2 = await firestore().collection("topic1").doc("YNLFsTS0fqqvlF9C0qsy").get()
         const userDocument3 = await firestore().collection("topic2").doc("70Oo3WVDuZBkEpW57RlS").get()
         const userDocument4 = await firestore().collection("topic3").doc("l8kY2PHIh8SWxAb9A41V").get()
@@ -218,7 +225,7 @@ export default class RefreshTab extends React.Component{
             <ScrollView
                         scrollEventThrottle={16}
                     >
-                        <Text>  Data Last Updated on: {this.state.date.name}</Text>
+                        <Text>  Data Last Updated on: {this.state.date.value}</Text>
                         <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 20 }}>
                             <Text style={{ fontSize: 24, fontWeight: '700', paddingHorizontal: 20 }}>
                                 {this.state.topic1.title}

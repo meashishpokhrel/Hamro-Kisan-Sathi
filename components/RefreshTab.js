@@ -68,13 +68,6 @@ topic7:{
     super (props);
     this.getUser();
 
-    this.subscriber0 = firestore().collection("users").doc("v7Qq6snlsKgbk1OfTnJ3").onSnapshot(doc => {
-      this.setState({
-        date:{
-          name: doc.data().Dateupdated
-      }
-        })
-      })
         this.subscriber1 = firestore().collection("topic1").doc("YNLFsTS0fqqvlF9C0qsy").onSnapshot(doc => {
         this.setState({
             topic1:{
@@ -142,7 +135,6 @@ topic7:{
   }
 
   getUser = async () =>{
-    const userDocument = await firestore().collection("users").doc("v7Qq6snlsKgbk1OfTnJ3").get()
     const userDocument2 = await firestore().collection("topic1").doc("YNLFsTS0fqqvlF9C0qsy").get()
     const userDocument3 = await firestore().collection("topic2").doc("70Oo3WVDuZBkEpW57RlS").get()
     const userDocument4 = await firestore().collection("topic3").doc("l8kY2PHIh8SWxAb9A41V").get()
