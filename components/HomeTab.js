@@ -4,67 +4,35 @@ import Carousel from './Carousel'
 import Category from "./Category"
 import { dummyData } from '../data/Data'
 import { render } from 'react-dom'
+import firestore from "@react-native-firebase/firestore"
 
-
-export default class HomeTab extends React.Component{
+export default class RefreshTab extends React.Component{
    
-
-    state={
-        kathmandu:4,
-        pokhara:6,
-        dhangadi:8,
-        butwal:10
+    state = {
+        user:{
+          tite:""
+        }
+      }
+      constructor(props){
+        super (props);
+        this.getUser();
+        this.subscriber = firestore().collection("users").doc("v7Qq6snlsKgbk1OfTnJ3").onSnapshot(doc => {
+          this.setState({
+            user:{
+              name: doc.data().name
+            }
+          })
+        })
+      }
+      getUser = async () =>{
+        const userDocument = await firestore().collection("users").doc("v7Qq6snlsKgbk1OfTnJ3").get()
+        console.log(userDocument)
     }
 
-    componentDidMount(){
-
-        firebasedata.database().ref('users/ekdine').on('value', (snapshot) =>{
-            this.setState({
-           ktm1: snapshot.val().kathmandu,
-           pok1: snapshot.val().pokhara,
-           dha1: snapshot.val().dhangadi,
-           but1: snapshot.val().butwal,
-
-          })
-        })
-         
-
-        firebasedata.database().ref('users/twodine').on('value', (snapshot) =>{
-            this.setState({
-           ktm2: snapshot.val().kathmandu,
-           pok2: snapshot.val().pokhara,
-           dha2: snapshot.val().dhangadi,
-           but2: snapshot.val().butwal,
-
-          })
-
-        })
-
-        firebasedata.database().ref('users/thirddine').on('value', (snapshot) =>{
-            this.setState({
-           ktm3: snapshot.val().kathmandu,
-           pok3: snapshot.val().pokhara,
-           dha3: snapshot.val().dhangadi,
-           but3: snapshot.val().butwal,
-
-          })
-        })
-
-        firebasedata.database().ref('users/fourthdine').on('value', (snapshot) =>{
-            this.setState({
-           ktm4: snapshot.val().kathmandu,
-           pok4: snapshot.val().pokhara,
-           dha4: snapshot.val().dhangadi,
-           but4: snapshot.val().butwal,
-
-          })
-        })
-
-
-        
-    }
+    
 
     render(){
+        
     return (
         
         <ScrollView scrollEventThrottle={16}>
@@ -81,24 +49,23 @@ export default class HomeTab extends React.Component{
                             <Text style={{ fontSize: 24, fontWeight: '700', paddingHorizontal: 20 }}>
                                 Ek Dinne Challa
                             </Text>
-
                             <View style={{ height: 130, marginTop: 20 }}>
                                 <ScrollView
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
                                     <Category imageUri={require('../assets/kathmandu.jpeg')}
-                                        name="Kathmandu" name2={this.state.ktm1}
+                                        name="Kathmandu" name2={this.state.user.name}
                                     />
                                     
                                     <Category imageUri={require('../assets/pokhara.jpg')}
-                                        name="Pokhara" name2={this.state.pok1}
+                                        name="Pokhara" name2="879"
                                     />
                                     <Category imageUri={require('../assets/dhangadi.jpg')}
-                                        name="Dhangadi" name2={this.state.dha1}
+                                        name="Dhangadi" name2="879"
                                     />
                                     <Category imageUri={require('../assets/butwal.jpg')}
-                                        name="Butwal" name2={this.state.but1}
+                                        name="Butwal" name2="879"
                                     />
                                 </ScrollView>
                             </View>
@@ -116,17 +83,17 @@ export default class HomeTab extends React.Component{
                                     showsHorizontalScrollIndicator={false}
                                 >
                                     <Category imageUri={require('../assets/kathmandu.jpeg')}
-                                        name="Kathmandu" name2={this.state.ktm2}
+                                        name="Kathmandu" name2="879"
                                     />
                                     
                                     <Category imageUri={require('../assets/pokhara.jpg')}
-                                        name="Pokhara" name2={this.state.pok2}
+                                        name="Pokhara" name2="879"
                                     />
                                     <Category imageUri={require('../assets/dhangadi.jpg')}
-                                        name="Dhangadi" name2={this.state.dha2}
+                                        name="Dhangadi" name2="879"
                                     />
                                     <Category imageUri={require('../assets/butwal.jpg')}
-                                        name="Butwal" name2={this.state.but2}
+                                        name="Butwal" name2="879"
                                     />
                                 </ScrollView>
                             </View>
@@ -144,17 +111,17 @@ export default class HomeTab extends React.Component{
                                     showsHorizontalScrollIndicator={false}
                                 >
                                    <Category imageUri={require('../assets/kathmandu.jpeg')}
-                                        name="Kathmandu" name2={this.state.ktm3}
+                                        name="Kathmandu" name2="879"
                                     />
                                     
                                     <Category imageUri={require('../assets/pokhara.jpg')}
-                                        name="Pokhara" name2={this.state.pok3}
+                                        name="Pokhara" name2="879"
                                     />
                                     <Category imageUri={require('../assets/dhangadi.jpg')}
-                                        name="Dhangadi" name2={this.state.dha3}
+                                        name="Dhangadi" name2="879"
                                     />
                                     <Category imageUri={require('../assets/butwal.jpg')}
-                                        name="Butwal" name2={this.state.but3}
+                                        name="Butwal" name2="879"
                                     />
                                 </ScrollView>
                             </View>
@@ -172,17 +139,17 @@ export default class HomeTab extends React.Component{
                                     showsHorizontalScrollIndicator={false}
                                 >
                                     <Category imageUri={require('../assets/kathmandu.jpeg')}
-                                        name="Kathmandu" name2={this.state.ktm4}
+                                        name="Kathmandu" name2="879"
                                     />
                                     
                                     <Category imageUri={require('../assets/pokhara.jpg')}
-                                        name="Pokhara" name2={this.state.pok4}
+                                        name="Pokhara" name2="879"
                                     />
                                     <Category imageUri={require('../assets/dhangadi.jpg')}
-                                        name="Dhangadi" name2={this.state.dha4}
+                                        name="Dhangadi" name2="879"
                                     />
                                     <Category imageUri={require('../assets/butwal.jpg')}
-                                        name="Butwal" name2={this.state.but4}
+                                        name="Butwal" name2="879"
                                     />
                                 </ScrollView>
                             </View>

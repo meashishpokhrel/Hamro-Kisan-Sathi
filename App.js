@@ -83,15 +83,12 @@ export default App
 // // import HomeTab from "./components/HomeTab"
 // import BottomTabB from './components/RefreshTab'
 // import BottomTabC from './components/ExitTab'
+// import getvalue from "./components/getvalue"
 // class Welcome extends Component{
 //     render(){
 //         return(
             
-//             <View>
-//                 <Text>Ashish Compoents using</Text>
-                
-                
-//             </View>
+//             <getvalue />
 
 //         )
 //     }

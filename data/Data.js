@@ -1,51 +1,58 @@
-import React, {Component} from "react";
+// import React, {Component} from "react";
+// import {View, Text, Button} from "react-native";
 
-import storage from '@react-native-firebase/storage';
-import firestore from "@react-native-firebase/firestore"
-import {FlatList, Image, Dimensions, View, Text} from 'react-native';
-class Images extends Component {
-        state = {
-            profileImageUrl: "image"
-        }
-        render(){
-            
-        const imageRef = storage().ref('/images/imgpic.png');
-        imageRef
-          .getDownloadURL()
-          .then((url) => {
-            //from url you can fetched the uploaded image easily
-            this.setState({profileImageUrl: url});
-          })
-          .catch((e) => console.log('getting downloadURL of image errorys => ', e));
-    
+// import firestore from "@react-native-firebase/firestore"
+
+// class dummyData extends Component {
+//   state = {
+//     user:{
+//       name:""
+//     }
+//   }
+//   constructor(props){
+//     super (props);
+//     this.getUser();
+//     this.subscriber = firestore().collection("users").doc("v7Qq6snlsKgbk1OfTnJ3").onSnapshot(doc => {
+//       this.setState({
+//         user:{
+//           name: doc.data().name
+//         }
+//       })
+//     })
+//   }
+//   getUser = async () =>{
+//     const userDocument = await firestore().collection("users").doc("v7Qq6snlsKgbk1OfTnJ3").get()
+//     console.log(userDocument)
+//   }
+//   render(){
         
-        
-      return (
-          <View>
-      
-    <Image source={{uri: this.state.profileImageUrl}} style={{
-            width: Dimensions.get('window').width / 4,
-            height: Dimensions.get('window').width / 4,
-          }} />
-        </View>
-      )
-        }
-    }
-    
+//   return(
+//     <View>
+//       <Text> Name: {this.state.user.name}</Text>
+//       {/* <Welcome /> */}
+//       <Images />
+//     </View>
+//   )
+//   }
+// }
+
+// export default Welcome;
+
+
 export const dummyData =
-        [{
-                title: 'Anise Aroma Art Bazar', url: this.state.profileImageUrl,
-                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                id: 1
+[{
+        title: 'Anise Aroma Art Bazarr', url: 'https://i.ibb.co/hYjK44F/anise-aroma-art-bazaar-277253.jpg',
+        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        id: 1
 
-        },
-        {
-                title: 'Food inside a Bowl', url: 'https://i.ibb.co/JtS24qP/food-inside-bowl-1854037.jpg',
-                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                id: 2
-        },
-        {
-                title: 'Vegatable Salad', url: 'https://i.ibb.co/JxykVBt/flat-lay-photography-of-vegetable-salad-on-plate-1640777.jpg',
-                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                id: 3
-        }]
+},
+{
+        title: 'Food inside a Bowl', url: 'https://i.ibb.co/JtS24qP/food-inside-bowl-1854037.jpg',
+        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        id: 2
+},
+{
+        title: 'Vegatable Salad', url: 'https://i.ibb.co/JxykVBt/flat-lay-photography-of-vegetable-salad-on-plate-1640777.jpg',
+        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        id: 3
+}]

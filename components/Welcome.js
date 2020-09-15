@@ -5,7 +5,9 @@ import FirebaseData from "./FirebaseData";
 
 
 class Welcome extends Component{
+    
     render(){
+        const students = ['shiva', 'krishna', 'ram', 'madhav']
         return(
             
             <View>
