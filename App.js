@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react'
-import SplashScreen from 'react-native-splash-screen'
 import {createAppContainer} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack'
 import {View,Text,StyleSheet, Image, BackHandler, AsyncStorage} from "react-native";
@@ -9,8 +8,6 @@ import BottomTabA from "./components/HomeTab"
 import BottomTabB from './components/RefreshTab'
 import BottomTabC from './components/ExitTab'
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'; 
-
 
 
 
@@ -64,36 +61,6 @@ tabBarOptions:{
 }
 )
 
-  
-
-
 const App = createAppContainer(tabNavigator)
 
-
-
 export default App
-
-// import React, {Component} from "react"
-
-// import FirebaseData from "./components/Carousel";
-
-
-// import {createAppContainer} from 'react-navigation'
-// import {createStackNavigator} from 'react-navigation-stack'
-// import {View,Text,StyleSheet, Image, BackHandler, AsyncStorage} from "react-native";
-// import {createBottomTabNavigator} from 'react-navigation-tabs'
-// // import HomeTab from "./components/HomeTab"
-// import BottomTabB from './components/RefreshTab'
-// import BottomTabC from './components/ExitTab'
-// import getvalue from "./components/getvalue"
-// class Welcome extends Component{
-//     render(){
-//         return(
-            
-//             <getvalue />
-
-//         )
-//     }
-// }
-
-// export default Welcome;

@@ -1,10 +1,9 @@
 import React,  { Component } from "react";
 import { ImageBackground,View, StyleSheet, Button, Alert, BackHandler,Text, Linking, Image, TouchableOpacity } from "react-native";
-const image = { uri: "https://reactjs.org/logo-og.png" };
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import firestore from "@react-native-firebase/firestore"
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'; 
 export default class App extends Component {
 
   state = {

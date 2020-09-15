@@ -2,8 +2,6 @@ import React from 'react'
 import {View, Text, StyleSheet, ScrollView, Image} from 'react-native'
 import Carousel from './Carousel'
 import Category from "./Category"
-import Getvalue from "./getvalue"
-// import { dummyData } from '../data/Data'
 import { render } from 'react-dom'
 import firestore from "@react-native-firebase/firestore"
 import storage from '@react-native-firebase/storage';
@@ -205,7 +203,6 @@ export default class RefreshTab extends React.Component{
         
         <ScrollView scrollEventThrottle={16}>
         <View>
-        <Getvalue />
             {/* <Carousel data = {dummyData}/> */}
 
             
