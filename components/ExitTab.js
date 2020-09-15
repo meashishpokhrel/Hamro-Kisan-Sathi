@@ -37,8 +37,7 @@ export default class App extends Component {
 
   return (
     <View style={styles.container}>
-        {/* <ImageBackground source={require('../assets/exit.jpg')} style={styles.image}>
-    </ImageBackground> */}
+        
     <Image source={require('../assets/contact.jpg')} style={styles.image}>
     </Image>
     <Text style={{ fontSize: 18, fontWeight: '600', paddingHorizontal: 20, paddingTop: 20 }}>
@@ -102,7 +101,3 @@ const styles = StyleSheet.create({
     }
   });
 
-
-// { text: "Exit", onPress: () => Linking.openURL("fb://profile/100003400344144") }
-// Hamro kisan facebook page{ text: "Exit", onPress: () => Linking.openURL("fb://page/2140081466321865") }
-//Hamro Kisan youtube channel { text: "Exit", onPress: () => Linking.openURL('vnd.youtube://c/KisankoPathsala') }

@@ -11,21 +11,24 @@ export default class RefreshTab extends React.Component{
    
     state = {
         user:[{
-            title: "name2yes", url: 'https://i.ibb.co/hYjK44F/anise-aroma-art-bazaar-277253.jpg',
-            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            title: "", url: 'a',
+            description: ".",
             id: 1
     
     },
     {
-            title: 'Food inside a Bowl', url: 'https://i.ibb.co/JtS24qP/food-inside-bowl-1854037.jpg',
-            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            title: '', url: 'a',
+            description: "",
             id: 2
     },
     {
-            title: 'Vegatable Salad', url: 'https://i.ibb.co/JxykVBt/flat-lay-photography-of-vegetable-salad-on-plate-1640777.jpg',
-            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            title: '', url: 'a',
+            description: "",
             id: 3
     }],
+    date:{
+        name: ""
+    },
     topic1:{
         title: "", //Title ek dine chala
         kat:"",     //kathmandu PRice
@@ -87,6 +90,7 @@ export default class RefreshTab extends React.Component{
         super (props);
         this.getUser();
         this.subscriber = firestore().collection("users").doc("v7Qq6snlsKgbk1OfTnJ3").onSnapshot(doc => {
+        
             this.subscriber1 = firestore().collection("topic1").doc("YNLFsTS0fqqvlF9C0qsy").onSnapshot(doc => {
             this.setState({
                 topic1:{
@@ -176,7 +180,10 @@ export default class RefreshTab extends React.Component{
                 title: doc.data().Title3, url: url3,
                 description: doc.data().Detail3,
                 id: 3
-        }]
+        }],
+        date:{
+            name: doc.data().Dateupdated
+        }
           })
         })
     })
@@ -211,7 +218,7 @@ export default class RefreshTab extends React.Component{
             <ScrollView
                         scrollEventThrottle={16}
                     >
-
+                        <Text>  Data Last Updated on: {this.state.date.name}</Text>
                         <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 20 }}>
                             <Text style={{ fontSize: 24, fontWeight: '700', paddingHorizontal: 20 }}>
                                 {this.state.topic1.title}

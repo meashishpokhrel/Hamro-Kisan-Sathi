@@ -1,8 +1,12 @@
-import * as React from 'react';
+import React , { Component} from 'react';
+import {View, Text} from "react-native";
 import { DataTable } from 'react-native-paper';
 import firestore from "@react-native-firebase/firestore"
-class MyComponent extends React.Component {
+class MyComponent extends Component {
   state = {
+    date:{
+      name: ""
+    },
 topic1:{
     title: "", //Title ek dine chala
     kat:"",     //kathmandu PRice
@@ -63,6 +67,14 @@ topic7:{
   constructor(props){
     super (props);
     this.getUser();
+
+    this.subscriber0 = firestore().collection("users").doc("v7Qq6snlsKgbk1OfTnJ3").onSnapshot(doc => {
+      this.setState({
+        date:{
+          name: doc.data().Dateupdated
+      }
+        })
+      })
         this.subscriber1 = firestore().collection("topic1").doc("YNLFsTS0fqqvlF9C0qsy").onSnapshot(doc => {
         this.setState({
             topic1:{
@@ -177,6 +189,22 @@ topic7:{
     </DataTable.Row>
     <DataTable.Row>
       <DataTable.Cell>{this.state.topic4.title}</DataTable.Cell>
+      <DataTable.Cell numeric>{this.state.topic1.kat}</DataTable.Cell>
+      <DataTable.Cell numeric>{this.state.topic1.pok}</DataTable.Cell>
+      <DataTable.Cell numeric>{this.state.topic1.dhan}</DataTable.Cell>
+      <DataTable.Cell numeric>{this.state.topic1.ita}</DataTable.Cell>
+      <DataTable.Cell numeric>{this.state.topic1.chit}</DataTable.Cell>
+    </DataTable.Row>
+    <DataTable.Row>
+      <DataTable.Cell>{this.state.topic5.title}</DataTable.Cell>
+      <DataTable.Cell numeric>{this.state.topic1.kat}</DataTable.Cell>
+      <DataTable.Cell numeric>{this.state.topic1.pok}</DataTable.Cell>
+      <DataTable.Cell numeric>{this.state.topic1.dhan}</DataTable.Cell>
+      <DataTable.Cell numeric>{this.state.topic1.ita}</DataTable.Cell>
+      <DataTable.Cell numeric>{this.state.topic1.chit}</DataTable.Cell>
+    </DataTable.Row>
+    <DataTable.Row>
+      <DataTable.Cell>{this.state.topic5.title}</DataTable.Cell>
       <DataTable.Cell numeric>{this.state.topic1.kat}</DataTable.Cell>
       <DataTable.Cell numeric>{this.state.topic1.pok}</DataTable.Cell>
       <DataTable.Cell numeric>{this.state.topic1.dhan}</DataTable.Cell>
