@@ -5,7 +5,7 @@ import Category from "./Category"
 import { render } from 'react-dom'
 import firestore from "@react-native-firebase/firestore"
 import storage from '@react-native-firebase/storage';
-
+import FastImage from 'react-native-fast-image'
 
 export default class RefreshTab extends React.Component{
    
@@ -34,7 +34,7 @@ export default class RefreshTab extends React.Component{
         kat:"",     //kathmandu PRice
         dhan:"",    // Dhangadi PRice
         pok:"",     //pokhara Price
-        ita:"",     //Itahari Price
+        birat:"",     //Itahari Price
         chit:""     //Chitwan Price
     },
     topic2:{
@@ -42,7 +42,7 @@ export default class RefreshTab extends React.Component{
         kat:"",     //kathmandu PRice
         dhan:"",    // Dhangadi PRice
         pok:"",     //pokhara Price
-        ita:"",     //Itahari Price
+        birat:"",     //Itahari Price
         chit:""     //Chitwan Price
     },
     topic3:{
@@ -89,8 +89,11 @@ export default class RefreshTab extends React.Component{
       constructor(props){
         super (props);
         this.getUser();
-        this.subscriber = firestore().collection("users").doc("v7Qq6snlsKgbk1OfTnJ3").onSnapshot(doc => {
+        
             
+
+            
+
 
             this.subscriber11 = firestore().collection("updatedDate").doc("yYVQMdJ1Argb0uuZMfYq").onSnapshot(doc => {
                 this.setState({
@@ -107,7 +110,7 @@ export default class RefreshTab extends React.Component{
                   kat: doc.data().kat,     
                     dhan:doc.data().dhan,    
                     pok:doc.data().pok,     
-                    ita:doc.data().ita,     
+                    birat:doc.data().birat,     
                     chit:doc.data().chit  
                 },
               })
@@ -119,7 +122,7 @@ export default class RefreshTab extends React.Component{
                       kat: doc.data().kat,     
                         dhan:doc.data().dhan,    
                         pok:doc.data().pok,     
-                        ita:doc.data().ita,     
+                        birat:doc.data().birat,     
                         chit:doc.data().chit  
                     }
                   })
@@ -164,40 +167,63 @@ export default class RefreshTab extends React.Component{
                               })
                             })
 
+    const image1 = storage().ref('/images/image1.jpg');	
+    const image2 = storage().ref('/images/image2.jpg');	
+    const image3 = storage().ref('/images/image3.jpg');	
+    image1.getDownloadURL().then((url) => {	
+        //from url you can fetched the uploaded image easily	
+        this.addURL = firestore().collection("users").doc("v7Qq6snlsKgbk1OfTnJ3").update({
+          url1: url,
+        }) 
+      })
+      image2.getDownloadURL().then((url) => {	
+        //from url you can fetched the uploaded image easily	
+        this.addURL = firestore().collection("users").doc("v7Qq6snlsKgbk1OfTnJ3").update({
+          url2: url,
+        }) 
+      })
+      image3.getDownloadURL().then((url) => {	
+        //from url you can fetched the uploaded image easily	
+        this.addURL = firestore().collection("users").doc("v7Qq6snlsKgbk1OfTnJ3").update({
+          url3: url,
+        }) 
+      })
 
-            image3=storage().ref('/images/image3.jpg');
-            image2=storage().ref('/images/image2.jpg');
-            image1 = storage().ref('/images/image1.jpg');
-        image1
-      .getDownloadURL()
-      .then((url1) => {
-          image2.getDownloadURL().then((url2) => {
-            image3.getDownloadURL().then((url3) => {
+            this.subscriber = firestore().collection("users").doc("v7Qq6snlsKgbk1OfTnJ3").onSnapshot(doc => {
+    //         image3=storage().ref('/images/image3.jpg');
+    //         image2=storage().ref('/images/image2.jpg');
+    //         image1 = storage().ref('/images/image1.jpg');
+    //     image1
+    //   .getDownloadURL()
+    //   .then((url1) => {
+    //       image2.getDownloadURL().then((url2) => {
+    //         image3.getDownloadURL().then((url3) => {
           this.setState({
             user:[{
-                title: doc.data().Title1, url: url1,
+                title: doc.data().Title1, url: doc.data().url1,
                 description: doc.data().Detail1,
                 id: 1
         
         },
         {
-                title: doc.data().Title2, url: url2,
+                title: doc.data().Title2, url: doc.data().url2,
                 description: doc.data().Detail2,
                 id: 2
         },
         {
-                title: doc.data().Title3, url: url3,
+                title: doc.data().Title3, url: doc.data().url3,
                 description: doc.data().Detail3,
                 id: 3
         }],
           })
-        })
-    })
-      })
+    //     })
+    // })
+    //   })
         })
       }
 
       getUser = async () =>{
+        //const add = await firestore().collection("add").doc("zT34es05RsBr3iTXlpAw").get()
         const userDocument = await firestore().collection("users").doc("v7Qq6snlsKgbk1OfTnJ3").get()
         const userDocument22 = await firestore().collection("updatedData").doc("yYVQMdJ1Argb0uuZMfYq").get()
         const userDocument2 = await firestore().collection("topic1").doc("YNLFsTS0fqqvlF9C0qsy").get()
@@ -218,8 +244,19 @@ export default class RefreshTab extends React.Component{
         <ScrollView scrollEventThrottle={16}>
         <View>
             {/* <Carousel data = {dummyData}/> */}
-
+        {/* <Images /> */}
             
+            {/* <FastImage
+        style={{ width: 200, height: 200 }}
+        source={{
+            uri: 'https://unsplash.it/400/400?image=1',
+            headers: { Authorization: 'someAuthToken' },
+            priority: FastImage.priority.normal,
+        }}
+        resizeMode={FastImage.resizeMode.contain}
+    /> */}
+     
+
             <Carousel data = {this.state.user}
             />
             <ScrollView
@@ -246,10 +283,10 @@ export default class RefreshTab extends React.Component{
                                         name="Dhangadi" name2="879"
                                     />
                                     <Category imageUri={require('../assets/butwal.jpg')}
-                                        name="Butwal" name2="879"
+                                        name="Chitwan" name2="879"
                                     />
                                     <Category imageUri={require('../assets/itahari.jpg')}
-                                        name="Itahari" name2="879"
+                                        name="Biratnagar" name2={this.state.topic1.birat}
                                     />
                                 </ScrollView>
                             </View>
@@ -277,7 +314,10 @@ export default class RefreshTab extends React.Component{
                                         name="Dhangadi" name2="879"
                                     />
                                     <Category imageUri={require('../assets/butwal.jpg')}
-                                        name="Butwal" name2="879"
+                                        name="Chitwan" name2="879"
+                                    />
+                                    <Category imageUri={require('../assets/itahari.jpg')}
+                                        name="Biratnagar" name2={this.state.topic1.birat}
                                     />
                                 </ScrollView>
                             </View>
@@ -295,17 +335,14 @@ export default class RefreshTab extends React.Component{
                                     showsHorizontalScrollIndicator={false}
                                 >
                                    <Category imageUri={require('../assets/kathmandu.jpeg')}
-                                        name="Kathmandu" name2="879"
+                                        name="Hy-line" name2="879"
                                     />
                                     
                                     <Category imageUri={require('../assets/pokhara.jpg')}
-                                        name="Pokhara" name2="879"
+                                        name="Lohmann" name2="879"
                                     />
-                                    <Category imageUri={require('../assets/dhangadi.jpg')}
-                                        name="Dhangadi" name2="879"
-                                    />
-                                    <Category imageUri={require('../assets/butwal.jpg')}
-                                        name="Butwal" name2="879"
+                                    <Category imageUri={require('../assets/pokhara.jpg')}
+                                        name="Bovens Brown" name2="879"
                                     />
                                 </ScrollView>
                             </View>
@@ -323,11 +360,11 @@ export default class RefreshTab extends React.Component{
                                     showsHorizontalScrollIndicator={false}
                                 >
                                     <Category imageUri={require('../assets/kathmandu.jpeg')}
-                                        name="Kathmandu" name2="879"
+                                        name="Large size" name2="879"
                                     />
                                     
                                     <Category imageUri={require('../assets/pokhara.jpg')}
-                                        name="Pokhara" name2="879"
+                                        name="Medium size" name2="879"
                                     />
                                     <Category imageUri={require('../assets/dhangadi.jpg')}
                                         name="Dhangadi" name2="879"
@@ -377,7 +414,8 @@ export default class RefreshTab extends React.Component{
         </View>  
         </ScrollView>
     )
-}}
+    }
+    }
 
 
   

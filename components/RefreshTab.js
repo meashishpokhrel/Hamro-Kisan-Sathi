@@ -2,6 +2,7 @@ import React , { Component} from 'react';
 import {View, Text} from "react-native";
 import { DataTable } from 'react-native-paper';
 import firestore from "@react-native-firebase/firestore"
+
 class MyComponent extends Component {
   state = {
     date:{
@@ -12,7 +13,7 @@ topic1:{
     kat:"",     //kathmandu PRice
     dhan:"",    // Dhangadi PRice
     pok:"",     //pokhara Price
-    ita:"",     //Itahari Price
+    birat:"",     //Itahari Price
     chit:""     //Chitwan Price
 },
 topic2:{
@@ -20,7 +21,7 @@ topic2:{
     kat:"",     //kathmandu PRice
     dhan:"",    // Dhangadi PRice
     pok:"",     //pokhara Price
-    ita:"",     //Itahari Price
+    birat:"",     //Itahari Price
     chit:""     //Chitwan Price
 },
 topic3:{
@@ -141,6 +142,7 @@ topic7:{
     const userDocument5 = await firestore().collection("topic4").doc("pD72V8KxiA8KyZTvURBD").get()
     const userDocument6 = await firestore().collection("topic5").doc("JvrMXKeuuj9e5hQ5ctv4").get()
 }
+
   render(){
   return(
   <DataTable>

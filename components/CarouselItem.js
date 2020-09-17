@@ -1,13 +1,20 @@
 import React from 'react'
-import { View, StyleSheet, Text, Image, Dimensions } from 'react-native'
+import FastImage from 'react-native-fast-image'
+import CachedImage from 'react-native-image-cache-wrapper';
 
+import { View, StyleSheet, Text, Image, Dimensions } from 'react-native'
+import storage from '@react-native-firebase/storage';
 const { width, height } = Dimensions.get('window')
 
-
+function getUriImage(uri) {
+    return uri !== null && uri !== undefined && uri.includes("/") && uri.includes(".") ? uri : ""
+    }
 const CarouselItem = ({ item }) => {
+    
     return (
         <View style={styles.cardView}>
-            <Image style={styles.image} source={{ uri: item.url }} />
+            {/* <CachedImage source={{uri:"https://assets-cdn.github.com/images/modules/logos_page/Octocat.png"}}/> */}
+            <Image style={styles.image} source={{ uri: item.url,  }}/>
             <View style={styles.textView}>
                 <Text style={styles.itemTitle}> {item.title}</Text>
                 <Text style={styles.itemDescription}>{item.description}</Text>
