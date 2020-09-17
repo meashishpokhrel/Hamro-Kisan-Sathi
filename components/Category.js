@@ -6,16 +6,17 @@ import {
     Image
 } from "react-native";
 
-
+import LinearGradient from "react-native-linear-gradient"
 export default class Category extends React.Component {
 
 
     render() {
         return (
+            
             <View style={{ height: 130, width: 130, marginLeft: 20, borderWidth: 0.5, borderColor: '#dddddd' }}>
                 <View style={{ flex: 2 }}>
                     <Image source={this.props.imageUri}
-                        style={{ flex: 1, width: null, height: null, resizeMode: 'cover', opacity: 0.67 }}
+                        style={{ flex: 1, width: null, height: null, resizeMode: 'cover', opacity: 0.4 }}
                     />
                     <View>
                         <Text style={styles.rateText}>{this.props.name2}</Text>
@@ -25,6 +26,7 @@ export default class Category extends React.Component {
                     <Text>{this.props.name}</Text>
                 </View>
             </View>
+
         );
     }
 }
@@ -40,14 +42,14 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 10,
         margin: 10,
-        left: 15,
-        color: 'white',
+        left: 30,
+        color: 'black',
         fontSize: 22,
         shadowColor: '#000',
         shadowOffset: { width: 0.8, height: 0.8 },
-        shadowOpacity: 1,
-        shadowRadius: 3,
+        shadowOpacity: 5,
+        shadowRadius: 8,
         fontWeight: "bold",
-        elevation: 5
+        elevation: 8
     }
 });

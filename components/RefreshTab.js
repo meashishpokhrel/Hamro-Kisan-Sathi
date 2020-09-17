@@ -1,230 +1,128 @@
-import React , { Component} from 'react';
-import {View, Text} from "react-native";
-import { DataTable } from 'react-native-paper';
+import React, { Component } from 'react';
+import { StyleSheet, View, Text } from 'react-native';
+import { Table, Row, Rows } from 'react-native-table-component';
 import firestore from "@react-native-firebase/firestore"
+import { ScrollView } from 'react-native-gesture-handler';
+export default class ExampleOne extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      date:{
+        value:""
+      },
+      tableHead: ['', 'KAT', 'CHI', 'POK',],
+      tableData: [
+        []
+      ]
+    }
+    this.subscriber10 = firestore().collection("updatedDate").doc("yYVQMdJ1Argb0uuZMfYq").onSnapshot(doc => {
+      this.setState({
+          date:{
+              value: doc.data().date,
+          }
+      })
+  })
+    this.subscriber2 = firestore().collection("topic2").doc("70Oo3WVDuZBkEpW57RlS").onSnapshot(doc => {
+    this.subscriber1 = firestore().collection("rates").doc("d4zCzT3U8UvRh9bam0mP").onSnapshot(doc => {
+      this.setState({
+        tableData: [
+          
+          [doc.data().Topic1title,doc.data().Topic1kat,doc.data().Topic1chi,doc.data().Topic1pok],
+          [doc.data().Topic2title,doc.data().Topic2kat,doc.data().Topic2chi,doc.data().Topic2pok],
+          ['','BIRAT','DHAN',''],
+          [doc.data().Topic1title,doc.data().Topic1birat,doc.data().Topic1dhan,''],
+          [doc.data().Topic2title,doc.data().Topic2birat,doc.data().Topic2dhan,''],
+          [''],
+          [doc.data().Topic3title,'Hyline',doc.data().Topic3hyline,''],
+          ['','Bovans-Brown',doc.data().Topic3bovan,''],
+          ['','Lohmann',doc.data().Topic3loh,,''],
+      
+          [doc.data().Topic4title,'Large Size',doc.data().Topic4large,''],
+          ['','Small Size',doc.data().Topic4small,,''],
+          [''],
+          [doc.data().Topic5title,doc.data().Topic5item1,doc.data().Topic5val1,''],
+          ['',doc.data().Topic5item2,doc.data().Topic5val2,''],
+          ['',doc.data().Topic5item3,doc.data().Topic5val3,''],
+          ['',doc.data().Topic5item4,doc.data().Topic5val4,''],
+          ['',doc.data().Topic5item5,doc.data().Topic5val5,''],
+          ['',doc.data().Topic5item6,doc.data().Topic5val6,''],
+          ['',doc.data().Topic5item7,doc.data().Topic5val7,''],
+          ['',doc.data().Topic5item8,doc.data().Topic5val8,''],
+          [''],
 
-class MyComponent extends Component {
-  state = {
-    date:{
-      name: ""
-    },
-topic1:{
-    title: "", //Title ek dine chala
-    kat:"",     //kathmandu PRice
-    dhan:"",    // Dhangadi PRice
-    pok:"",     //pokhara Price
-    birat:"",     //Itahari Price
-    chit:""     //Chitwan Price
-},
-topic2:{
-    title: "", //Title ek dine chala
-    kat:"",     //kathmandu PRice
-    dhan:"",    // Dhangadi PRice
-    pok:"",     //pokhara Price
-    birat:"",     //Itahari Price
-    chit:""     //Chitwan Price
-},
-topic3:{
-    title: "", //Title ek dine chala
-    kat:"",     //kathmandu PRice
-    dhan:"",    // Dhangadi PRice
-    pok:"",     //pokhara Price
-    ita:"",     //Itahari Price
-    chit:""     //Chitwan Price
-},
-topic4:{
-    title: "", //Title ek dine chala
-    kat:"",     //kathmandu PRice
-    dhan:"",    // Dhangadi PRice
-    pok:"",     //pokhara Price
-    ita:"",     //Itahari Price
-    chit:""     //Chitwan Price
-},
-topic5:{
-    title: "", //Title ek dine chala
-    kat:"",     //kathmandu PRice
-    dhan:"",    // Dhangadi PRice
-    pok:"",     //pokhara Price
-    ita:"",     //Itahari Price
-    chit:""     //Chitwan Price
-},
-topic6:{
-    title: "", //Title ek dine chala
-    kat:"",     //kathmandu PRice
-    dhan:"",    // Dhangadi PRice
-    pok:"",     //pokhara Price
-    ita:"",     //Itahari Price
-    chit:""     //Chitwan Price
-},
-topic7:{
-    title: "", //Title ek dine chala
-    kat:"",     //kathmandu PRice
-    dhan:"",    // Dhangadi PRice
-    pok:"",     //pokhara Price
-    ita:"",     //Itahari Price
-    chit:""     //Chitwan Price
-},
-  }
-  constructor(props){
-    super (props);
-    this.getUser();
 
-        this.subscriber1 = firestore().collection("topic1").doc("YNLFsTS0fqqvlF9C0qsy").onSnapshot(doc => {
-        this.setState({
-            topic1:{
-              title: doc.data().title,
-              kat: doc.data().kat,     
-                dhan:doc.data().dhan,    
-                pok:doc.data().pok,     
-                ita:doc.data().ita,     
-                chit:doc.data().chit  
-            }
-          })
+          
+          
+        ]
         })
-        this.subscriber2 = firestore().collection("topic2").doc("70Oo3WVDuZBkEpW57RlS").onSnapshot(doc => {
-            this.setState({
-                topic2:{
-                  title: doc.data().title,
-                  kat: doc.data().kat,     
-                    dhan:doc.data().dhan,    
-                    pok:doc.data().pok,     
-                    ita:doc.data().ita,     
-                    chit:doc.data().chit  
-                }
-              })
-            })
-
-            this.subscriber3 = firestore().collection("topic3").doc("l8kY2PHIh8SWxAb9A41V").onSnapshot(doc => {
-                this.setState({
-                    topic3:{
-                      title: doc.data().title,
-                      kat: doc.data().kat,     
-                        dhan:doc.data().dhan,    
-                        pok:doc.data().pok,     
-                        ita:doc.data().ita,     
-                        chit:doc.data().chit  
-                    }
-                  })
+      })
+    })
+      
+          this.subscriber3 = firestore().collection("topic3").doc("l8kY2PHIh8SWxAb9A41V").onSnapshot(doc => {
+              this.setState({
+                tableData: [
+                  [doc.data().title,doc.data().title,doc.data().title,doc.data().title],
+                  [doc.data().title2,doc.data().title2,doc.data().title2,doc.data().title2],
+                  [doc.data().title,doc.data().title,doc.data().title,doc.data().title],
+                  [doc.data().title,doc.data().title,doc.data().title,doc.data().title],
+                ]
                 })
+              })
 
-                this.subscriber4 = firestore().collection("topic4").doc("pD72V8KxiA8KyZTvURBD").onSnapshot(doc => {
-                    this.setState({
-                        topic4:{
-                          title: doc.data().title,
-                          kat: doc.data().kat,     
-                            dhan:doc.data().dhan,    
-                            pok:doc.data().pok,     
-                            ita:doc.data().ita,     
-                            chit:doc.data().chit  
-                        }
-                      })
+              this.subscriber4 = firestore().collection("topic4").doc("pD72V8KxiA8KyZTvURBD").onSnapshot(doc => {
+                  this.setState({
+                      topic4:{
+                        title: doc.data().title,
+                        kat: doc.data().kat,     
+                          dhan:doc.data().dhan,    
+                          pok:doc.data().pok,     
+                          ita:doc.data().ita,     
+                          chit:doc.data().chit  
+                      }
                     })
+                  })
 
-                    this.subscriber4 = firestore().collection("topic5").doc("JvrMXKeuuj9e5hQ5ctv4").onSnapshot(doc => {
-                        this.setState({
-                            topic5:{
-                              title: doc.data().title,
-                              kat: doc.data().kat,     
-                                dhan:doc.data().dhan,    
-                                pok:doc.data().pok,     
-                                ita:doc.data().ita,     
-                                chit:doc.data().chit  
-                            }
-                          })
+                  this.subscriber4 = firestore().collection("topic5").doc("JvrMXKeuuj9e5hQ5ctv4").onSnapshot(doc => {
+                      this.setState({
+                          topic5:{
+                            title: doc.data().title,
+                            kat: doc.data().kat,     
+                              dhan:doc.data().dhan,    
+                              pok:doc.data().pok,     
+                              ita:doc.data().ita,     
+                              chit:doc.data().chit  
+                          }
                         })
-
+                      })
   }
-
   getUser = async () =>{
-    const userDocument2 = await firestore().collection("topic1").doc("YNLFsTS0fqqvlF9C0qsy").get()
+    const userDocument0 = await firestore().collection("updatedDate").doc("yYVQMdJ1Argb0uuZMfYq").get()
+    const userDocument2 = await firestore().collection("rates").doc("d4zCzT3U8UvRh9bam0mP").get()
     const userDocument3 = await firestore().collection("topic2").doc("70Oo3WVDuZBkEpW57RlS").get()
     const userDocument4 = await firestore().collection("topic3").doc("l8kY2PHIh8SWxAb9A41V").get()
     const userDocument5 = await firestore().collection("topic4").doc("pD72V8KxiA8KyZTvURBD").get()
     const userDocument6 = await firestore().collection("topic5").doc("JvrMXKeuuj9e5hQ5ctv4").get()
 }
 
-  render(){
-  return(
-  <DataTable>
-    <DataTable.Header>
-      <DataTable.Title sortDirection='ascending'
-          >Items</DataTable.Title>
-      <DataTable.Title numeric>KTM</DataTable.Title>
-      <DataTable.Title numeric>PKR</DataTable.Title>
-      <DataTable.Title numeric>Dhang</DataTable.Title>
-      <DataTable.Title numeric>Itah</DataTable.Title>
-      <DataTable.Title numeric>Chit</DataTable.Title>
-    </DataTable.Header>
-
-    <DataTable.Row>
-      <DataTable.Cell>{this.state.topic1.title}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.kat}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.pok}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.dhan}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.ita}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.chit}</DataTable.Cell>
-    </DataTable.Row>
-
-    <DataTable.Row>
-      <DataTable.Cell>{this.state.topic2.title}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.kat}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.pok}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.dhan}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.ita}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.chit}</DataTable.Cell>
-    </DataTable.Row>
-    <DataTable.Row>
-      <DataTable.Cell>{this.state.topic3.title}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.kat}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.pok}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.dhan}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.ita}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.chit}</DataTable.Cell>
-    </DataTable.Row>
-    <DataTable.Row>
-      <DataTable.Cell>{this.state.topic4.title}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.kat}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.pok}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.dhan}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.ita}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.chit}</DataTable.Cell>
-    </DataTable.Row>
-    <DataTable.Row>
-      <DataTable.Cell>{this.state.topic5.title}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.kat}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.pok}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.dhan}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.ita}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.chit}</DataTable.Cell>
-    </DataTable.Row>
-    <DataTable.Row>
-      <DataTable.Cell>{this.state.topic5.title}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.kat}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.pok}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.dhan}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.ita}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.chit}</DataTable.Cell>
-    </DataTable.Row>
-    <DataTable.Row>
-      <DataTable.Cell>{this.state.topic5.title}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.kat}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.pok}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.dhan}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.ita}</DataTable.Cell>
-      <DataTable.Cell numeric>{this.state.topic1.chit}</DataTable.Cell>
-    </DataTable.Row>
-
-    <DataTable.Pagination
-      page={1}
-      numberOfPages={3}
-      onPageChange={page => {
-        console.log(page);
-      }}
-      label="1-1 of 1"
-    />
-  </DataTable>
-  )    
+ 
+  render() {
+    const state = this.state;
+    return (
+      <ScrollView>
+      <View style={styles.container}>
+      <Text>  Data Last Updated on: {this.state.date.value}</Text>
+        <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
+          <Row data={state.tableHead} style={styles.head} textStyle={styles.text}/>
+          <Rows data={state.tableData} textStyle={styles.text}/>
+        </Table>
+      </View>
+      </ScrollView>
+    )
+  }
 }
-}
-
-export default MyComponent;
+ 
+const styles = StyleSheet.create({
+  container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
+  head: { height: 40, backgroundColor: '#f1f8ff' },
+  text: { margin: 6 }
+});

@@ -38,7 +38,7 @@ export default class App extends Component {
   return (
     <View style={styles.container}>
         
-    <Image source={require('../assets/contact.jpg')} style={styles.image}>
+    <Image source={require('../assets/a5.jpg')} style={styles.image} >
     </Image>
     <Text style={{ fontSize: 18, fontWeight: '600', paddingHorizontal: 20, paddingTop: 20 }}>
     {this.state.user.name}
@@ -62,9 +62,11 @@ const styles = StyleSheet.create({
       
     },
     image: {
-      flex: 1,
+      flex: 3,
       resizeMode: "cover",
-      justifyContent: "center"
+      // justifyContent: "center",
+      // paddingTop: 100,
+      // paddingLeft: 800,
     },
     text: {
       color: "grey",

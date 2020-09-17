@@ -13,7 +13,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const tabNavigator = createBottomTabNavigator({
   Home: createStackNavigator({
-      "Khukhure": BottomTabA,
+      "Kukhure": BottomTabA,
       HomeTab: BottomTabA,
   }) ,
 
@@ -46,12 +46,12 @@ tabBarIcon: ({focused, horizontal,tintColor }) => {
 }),
 
 tabBarOptions:{
-  activeTintColor: '#ffffff',
-  activeBackgroundColor: '#f4511e',
+  activeTintColor: '#000',
+  activeBackgroundColor: '#000',
 
   keyboardHidesTabBar: false,
   tabStyle: {
-      backgroundColor: '#253cae'
+      backgroundColor: '#87ceeb'
   },
 
   labelStyle: {
