@@ -1,6 +1,4 @@
 import React from 'react'
-import FastImage from 'react-native-fast-image'
-import CachedImage from 'react-native-image-cache-wrapper';
 
 import { View, StyleSheet, Text, Image, Dimensions } from 'react-native'
 import storage from '@react-native-firebase/storage';

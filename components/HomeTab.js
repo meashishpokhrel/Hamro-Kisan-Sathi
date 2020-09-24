@@ -5,8 +5,7 @@ import Category from "./Category"
 import { render } from 'react-dom'
 import firestore from "@react-native-firebase/firestore"
 import storage from '@react-native-firebase/storage';
-import FastImage from 'react-native-fast-image'
-import LinearGradient from "react-native-linear-gradient"
+
 export default class RefreshTab extends React.Component{
    
     state = {
@@ -119,7 +118,7 @@ export default class RefreshTab extends React.Component{
                         t5e:doc.data().Topic5item5,
                         t5f:doc.data().Topic5item6,
                         t5g:doc.data().Topic5item7,
-                        t5h:doc.data().Topic5item5,
+                        t5h:doc.data().Topic5item8,
 
                         t5av:doc.data().Topic5val1, 
                         t5bv:doc.data().Topic5val2,    //kathmandu PRice
@@ -347,7 +346,7 @@ export default class RefreshTab extends React.Component{
                                        name={this.state.topics.t5e} name2={this.state.topics.t5ev}
                                     />
                                     <Category imageUri={require('../assets/chicken.jpg')}
-                                       name={this.state.topics.t5f} name2={this.state.topics.tfv}
+                                       name={this.state.topics.t5f} name2={this.state.topics.t5fv}
                                     />
                                     <Category imageUri={require('../assets/chicken.jpg')}
                                        name={this.state.topics.t5g} name2={this.state.topics.t5gv}

@@ -5883,6 +5883,11 @@ react-native-screens@^2.10.1:
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.10.1.tgz#06d22fae87ef0ce51c616c34a199726db1403b95"
   integrity sha512-Z2kKSk4AwWRQNCBmTjViuBQK0/Lx0jc25TZptn/2gKYUCOuVRvCekoA26u0Tsb3BIQ8tWDsZW14OwDlFUXW1aw==
 
+react-native-send-intent@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-send-intent/-/react-native-send-intent-1.2.2.tgz#9ee3d375864e0fe5e10ad8f0cee9c054b0bee08e"
+  integrity sha512-vJUY89b4sgzazPqedKWG+wNEyqSjxJuwU9SP0tXIVvZdHHTt1AzH1GHJ1H3mtLDSdW7c4693L86i4GD10/pZqw==
+
 react-native-tab-view@^2.11.0:
   version "2.15.1"
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-2.15.1.tgz#cf4df4ffdec504263a2e06a6becd8831b9a19ad9"

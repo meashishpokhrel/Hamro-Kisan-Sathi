@@ -58,51 +58,11 @@ export default class ExampleOne extends Component {
       })
     })
       
-          this.subscriber3 = firestore().collection("topic3").doc("l8kY2PHIh8SWxAb9A41V").onSnapshot(doc => {
-              this.setState({
-                tableData: [
-                  [doc.data().title,doc.data().title,doc.data().title,doc.data().title],
-                  [doc.data().title2,doc.data().title2,doc.data().title2,doc.data().title2],
-                  [doc.data().title,doc.data().title,doc.data().title,doc.data().title],
-                  [doc.data().title,doc.data().title,doc.data().title,doc.data().title],
-                ]
-                })
-              })
-
-              this.subscriber4 = firestore().collection("topic4").doc("pD72V8KxiA8KyZTvURBD").onSnapshot(doc => {
-                  this.setState({
-                      topic4:{
-                        title: doc.data().title,
-                        kat: doc.data().kat,     
-                          dhan:doc.data().dhan,    
-                          pok:doc.data().pok,     
-                          ita:doc.data().ita,     
-                          chit:doc.data().chit  
-                      }
-                    })
-                  })
-
-                  this.subscriber4 = firestore().collection("topic5").doc("JvrMXKeuuj9e5hQ5ctv4").onSnapshot(doc => {
-                      this.setState({
-                          topic5:{
-                            title: doc.data().title,
-                            kat: doc.data().kat,     
-                              dhan:doc.data().dhan,    
-                              pok:doc.data().pok,     
-                              ita:doc.data().ita,     
-                              chit:doc.data().chit  
-                          }
-                        })
-                      })
   }
   getUser = async () =>{
     const userDocument0 = await firestore().collection("updatedDate").doc("yYVQMdJ1Argb0uuZMfYq").get()
     const userDocument2 = await firestore().collection("rates").doc("d4zCzT3U8UvRh9bam0mP").get()
-    const userDocument3 = await firestore().collection("topic2").doc("70Oo3WVDuZBkEpW57RlS").get()
-    const userDocument4 = await firestore().collection("topic3").doc("l8kY2PHIh8SWxAb9A41V").get()
-    const userDocument5 = await firestore().collection("topic4").doc("pD72V8KxiA8KyZTvURBD").get()
-    const userDocument6 = await firestore().collection("topic5").doc("JvrMXKeuuj9e5hQ5ctv4").get()
-}
+  }
 
  
   render() {

@@ -6,7 +6,6 @@ import {
     Image
 } from "react-native";
 
-import LinearGradient from "react-native-linear-gradient"
 export default class Category extends React.Component {
 
 
